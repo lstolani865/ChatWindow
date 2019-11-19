@@ -4,9 +4,14 @@ const router = express.Router();
 const Task = require("../models/product");
 
 //Route to direct use to Add Task form
-router.get("/add",(req,res)=>
+router.get("/",(req,res)=>
 {
     res.render("product/productdashboard")
+});
+
+router.get("/add",(req,res)=>
+{
+    res.render("product/productaddform")
 });
 
 router.post("/add",(req,res)=>
@@ -20,7 +25,7 @@ router.post("/add",(req,res)=>
         taxable:req.body.taxable,
     }
 
-    const product = new product(newproduct)
+    const product = new productForm(newproduct)
         product.save()
         .then(()=>{
             console.log(`product was added to the database`);
@@ -46,18 +51,44 @@ router.get("/list",(req,res)=>
 });
 
 
-router.get("/list",(req,res)=>
+//Route to direct user to edit task form
+router.get("/edit/:id",(req,res)=>
 {
+    Task.findById(req.params.id)
+    .then((product)=>{
 
-    product.find()
-    .then((tasks)=>{
-        res.render("product/list",
-        {
-            lists:product
-        });
+        res.render("product/producteditform",{
+            productDocument:product
+        })
+
     })
     .catch(err=>console.log(`Error : ${err}`));
 });
+
+
+router.put("/edit/:id",(req,res)=>
+{
+    product.findById(req.params.id)
+    .then((task)=>{
+
+        product.title=req.body.title;
+        product.description=req.body.description;
+        product.quantity=req.body.quantity;
+        product.price=req.body.price;
+        product.taxable=req.body.taxable;
+        
+
+        product.save()
+
+        .then(()=>{
+           res.redirect("/product/list") 
+        })
+        .catch(err=>console.log(`Error : ${err}`));
+
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+});
+
 
 module.exports= router;
 

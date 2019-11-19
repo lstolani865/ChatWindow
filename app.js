@@ -28,7 +28,7 @@ app.use("/",productRoutes);
 app.engine("handlebars",exphbs());
 app.set("view engine","handlebars");
 
-const MONGO_DB_URL=`mongodb+srv://lavina_2710:<Srichand106!>@cluster0-rrc0z.mongodb.net/test?retryWrites=true&w=majority`;
+const MONGO_DB_URL="mongodb+srv://lavina_2710:Srichand106!@cluster0-rrc0z.mongodb.net/test?retryWrites=true&w=majority";
  
 //This allows Mongoose to connect to MongoDB
 mongoose.connect(MONGO_DB_URL, {useNewUrlParser: true,useUnifiedTopology: true })
