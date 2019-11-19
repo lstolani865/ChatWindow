@@ -22,29 +22,28 @@ router.post("/add",(req,res)=>
         price:req.body.price,
         quantity:req.body.quantity,
         description : req.body.description,
-        taxable:req.body.taxable,
+        taxable:req.body.taxable
     }
 
-    const product = new productForm(newproduct)
-        product.save()
-        .then(()=>{
-            console.log(`product was added to the database`);
-            console.log(`${product}`);
-            res.redirect("/product/list");
-        
-        })
-        .catch(err=>console.log(`Error : ${err}`));
+    const product = new Task(newproduct)
+
+    product.save()
+    .then(()=>{
+        console.log(`product was added to the database`);
+        console.log(`${product}`);
+        res.redirect("/list");
+    })
+    .catch(err=>console.log(`Error : ${err}`));
   
 }); 
 
 router.get("/list",(req,res)=>
 {
-
-    product.find()
-    .then((tasks)=>{
-        res.render("product/list",
+    Task.find()
+    .then((products)=>{
+        res.render("product/productList",
         {
-            lists:product
+            lists: products
         });
     })
     .catch(err=>console.log(`Error : ${err}`));

@@ -24,6 +24,7 @@ app.use(methodOverride('_method'));
 //MAPs EXPRESS TO ALL OUR  ROUTER OBJECTS
 app.use("/",productRoutes);
 
+
 //This tells Express to set Handlebars as its template engine
 app.engine("handlebars",exphbs());
 app.set("view engine","handlebars");

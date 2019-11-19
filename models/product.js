@@ -5,7 +5,8 @@ const productSchema = new Schema({
   title:  
   {
       type:String,
-      required:true
+      required:true,
+      unique: true
   },
     price:  
   {
@@ -14,7 +15,7 @@ const productSchema = new Schema({
   },
   quantity:  
   {
-      type:String,
+      type:Number,
       required:true
   },
   description :
@@ -24,9 +25,8 @@ const productSchema = new Schema({
   },
 
   taxable:{
-    type:Boolean,
+    type:String,
     required:true
-
   }
 });
 

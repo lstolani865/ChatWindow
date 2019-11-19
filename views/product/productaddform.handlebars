@@ -1,6 +1,6 @@
 <h2>Add product</h2>
     
-    <form method="POST" action="/product/add">
+    <form method="POST" action="/add">
 
         <label>Product Title</label>
         <input type="text" name="title" id="title"> <br><br>
@@ -9,7 +9,7 @@
         <input type="text"  name="price" id="price"><br><br>
 
         <label>Quantity on hand</label>
-        <input type="date" name="quantity" id="quantity"> <br><br>
+        <input type="text" name="quantity" id="quantity"> <br><br>
 
         <label>Product Description</label>
         <textarea id="description" name="description"></textarea> <br><br>
@@ -17,8 +17,8 @@
         <label> Taxable Item </label>
 
         <input type="checkbox" name="taxable" value="yes">yes<br>
-         <input type="checkbox" name="taxable" value="no">no<br>
+        <input type="checkbox" name="taxable" value="no">no<br>
         
-
+        <input type="submit" value=" Add Product">
 
     </form>
