@@ -43,7 +43,7 @@ router.get("/list",(req,res)=>
     .then((products)=>{
         res.render("product/productList",
         {
-            lists: products
+            list: products
         });
     })
     .catch(err=>console.log(`Error : ${err}`));
@@ -56,8 +56,8 @@ router.get("/edit/:id",(req,res)=>
     Task.findById(req.params.id)
     .then((product)=>{
 
-        res.render("product/producteditform",{
-            productDocument:product
+        res.render("product/productEditForm",{
+            productInformation: product
         })
 
     })
@@ -67,8 +67,8 @@ router.get("/edit/:id",(req,res)=>
 
 router.put("/edit/:id",(req,res)=>
 {
-    product.findById(req.params.id)
-    .then((task)=>{
+    Task.findById(req.params.id)
+    .then((product)=>{
 
         product.title=req.body.title;
         product.description=req.body.description;
@@ -76,11 +76,10 @@ router.put("/edit/:id",(req,res)=>
         product.price=req.body.price;
         product.taxable=req.body.taxable;
         
-
         product.save()
 
         .then(()=>{
-           res.redirect("/product/list") 
+           res.redirect("/");
         })
         .catch(err=>console.log(`Error : ${err}`));
 

@@ -1,23 +1,22 @@
 <h2>Edit product</h2>
-    <form method="POST" action="/product/edit">
+    <form method="POST" action="/edit/{{productInformation._id}}/?_method=PUT">
 
         <label>Product Title</label>
-        <input type="text" name="title" id="title"> <br><br>
+        <input type="text" name="title" id="title" value={{productInformation.title}}> <br><br>
 
         <label>Product Price</label>
-        <input type="text"  name="price" id="price"><br><br>
+        <input type="text"  name="price" id="price" value={{productInformation.price}}><br><br>
 
         <label>Quantity on hand</label>
-        <input type="date" name="quantity" id="quantity"> <br><br>
+        <input type="text" name="quantity" id="quantity" value={{productInformation.quantity}}> <br><br>
 
         <label>Product Description</label>
-        <textarea id="description" name="description"></textarea> <br><br>
+        <textarea id="description" name="description">{{productInformation.description}}</textarea> <br><br>
 
         <label> Taxable Item </label>
-
-        <input type="radiobutton" name="taxable" value="yes">yes<br>
-         <input type="radiobutton" name="taxable" value="no">no<br>
+        <input type="radio" name="taxable" value="yes" checked="checked">yes
+        <input type="radio" name="taxable" value="no">no<br>
         
-
+        <input type="submit" value="EDIT PRODUCT">
 
     </form>

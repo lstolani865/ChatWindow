@@ -1,7 +1,9 @@
 <h2>product listing </h2>
  
 <div class="products_list">
-    {{#each product}}    
-        <p>{{product.title}}</p><a href="/list/{{product._id}}">list</a>
+    {{#each list}}    
+        {{this.title}}<a href="/edit/{{this._id}}">EDIT</a><br>
+    {{else}}
+        No Products exist yet!
     {{/each}}
 </div>
